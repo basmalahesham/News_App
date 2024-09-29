@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/layout/home_layout_view.dart';
 import 'package:news_app/moduls/splash/splash_view.dart';
 
 void main() {
@@ -15,7 +16,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(),
       initialRoute: SplashView.routeName,
       routes: {
-        SplashView.routeName:(context)=>SplashView(),
+        SplashView.routeName: (context) => const SplashView(),
+        HomeLayoutView.routeName: (context) => const HomeLayoutView(),
       },
     );
   }
