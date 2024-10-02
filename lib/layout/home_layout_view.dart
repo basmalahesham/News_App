@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:news_app/layout/widgets/custom_drawer.dart';
 
 class HomeLayoutView extends StatefulWidget {
   const HomeLayoutView({super.key});
@@ -25,6 +26,10 @@ class _HomeLayoutViewState extends State<HomeLayoutView> {
       ),
       child: Scaffold(
         appBar: AppBar(
+          iconTheme: const IconThemeData(
+            color: Colors.white,
+            size: 25,
+          ),
           title: Text(
             'News App',
             style: GoogleFonts.exo(
@@ -33,6 +38,7 @@ class _HomeLayoutViewState extends State<HomeLayoutView> {
             ),
           ),
         ),
+        drawer: const CustomDrawer(),
         body: Container(),
       ),
     );
