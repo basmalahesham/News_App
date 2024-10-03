@@ -81,7 +81,10 @@ class _HomeLayoutViewState extends State<HomeLayoutView> {
             ),
           ),
         ),
-        drawer: const CustomDrawer(),
+        drawer: CustomDrawer(
+          selectedCategory: selectedCategory,
+          onPressed: onPressed,
+        ),
         body: selectedCategory == null
             ? Padding(
                 padding: const EdgeInsets.all(20.0),
@@ -128,5 +131,12 @@ class _HomeLayoutViewState extends State<HomeLayoutView> {
     log(categoryModel.title);
     selectedCategory = categoryModel;
     setState(() {});
+  }
+
+  onPressed() {
+    setState(() {
+      selectedCategory = null;
+      Navigator.pop(context);
+    });
   }
 }

@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:news_app/core/theme/app_theme.dart';
+import 'package:news_app/models/category_model.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({
     super.key,
+    this.selectedCategory,
+    this.onPressed,
   });
-
+  final CategoryModel? selectedCategory;
+  final Function? onPressed;
   @override
   Widget build(BuildContext context) {
     var media = MediaQuery.of(context).size;
@@ -30,13 +34,12 @@ class CustomDrawer extends StatelessWidget {
           //SizedBox(height: 30,),
           GestureDetector(
             onTap: () {
-              // if (onPressed != null) {
-              //   onPressed!();
-              // }
+              if (onPressed != null) {
+                onPressed!();
+              }
             },
             child: Padding(
-              padding:
-                  const EdgeInsets.symmetric(vertical: 18),
+              padding: const EdgeInsets.symmetric(vertical: 18),
               child: ListTile(
                 title: Text(
                   'Categories',
@@ -56,8 +59,7 @@ class CustomDrawer extends StatelessWidget {
           GestureDetector(
             onTap: () {},
             child: Padding(
-              padding:
-                  const EdgeInsets.symmetric(vertical: 4),
+              padding: const EdgeInsets.symmetric(vertical: 4),
               child: ListTile(
                 title: Text(
                   'Settings',
