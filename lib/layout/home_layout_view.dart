@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:news_app/layout/widgets/custom_drawer.dart';
+import 'package:news_app/models/category_model.dart';
 
 class HomeLayoutView extends StatefulWidget {
   const HomeLayoutView({super.key});
@@ -12,6 +13,45 @@ class HomeLayoutView extends StatefulWidget {
 }
 
 class _HomeLayoutViewState extends State<HomeLayoutView> {
+  List<CategoryModel> categoriesList = [
+    CategoryModel(
+      id: 'sports',
+      title: 'Sports',
+      image: 'assets/images/sports.png',
+      backgroundColor: const Color(0xFFC91C22),
+    ),
+    CategoryModel(
+      id: 'politics',
+      title: 'Politics',
+      image: 'assets/images/politics.png',
+      backgroundColor: const Color(0xFF003E90),
+    ),
+    CategoryModel(
+      id: 'health',
+      title: 'Health',
+      image: 'assets/images/health.png',
+      backgroundColor: const Color(0xFFED1E70),
+    ),
+    CategoryModel(
+      id: 'business',
+      title: 'Business',
+      image: 'assets/images/bussines.png',
+      backgroundColor: const Color(0xFFCF7E48),
+    ),
+    CategoryModel(
+      id: 'environment',
+      title: 'Environment',
+      image: 'assets/images/environment.png',
+      backgroundColor: const Color(0xFF4882CF),
+    ),
+    CategoryModel(
+      id: 'science',
+      title: 'Science',
+      image: 'assets/images/science.png',
+      backgroundColor: const Color(0xFFF2D352),
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Container(
