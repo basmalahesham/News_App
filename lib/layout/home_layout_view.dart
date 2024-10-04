@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:news_app/layout/widgets/custom_drawer.dart';
 import 'package:news_app/layout/widgets/grid_view_item_builder.dart';
+import 'package:news_app/layout/widgets/news_view.dart';
 import 'package:news_app/models/category_model.dart';
 
 class HomeLayoutView extends StatefulWidget {
@@ -120,7 +121,7 @@ class _HomeLayoutViewState extends State<HomeLayoutView> {
                   ],
                 ),
               )
-            : Container(),
+            : NewsView(categoryModel: selectedCategory!),
       ),
     );
   }
