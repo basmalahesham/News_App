@@ -17,23 +17,32 @@ class NewsView extends StatefulWidget {
 }
 
 class _NewsViewState extends State<NewsView> {
+  var future;
+  @override
+  void initState() {
+    super.initState();
+    future = ApiManager.fetchSources(widget.categoryModel.id);
+  }
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<SourceModel>(
-      future: ApiManager.fetchSources(widget.categoryModel.id),
+      future: future,
       builder: (context, snapshot) {
         if (snapshot.hasError) {
-          return Center(child: Text(snapshot.error.toString()));
+          return Center(
+            child: Text(
+              snapshot.error.toString(),
+            ),
+          );
         }
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(
             child: CircularProgressIndicator(),
           );
         }
-
-        SourceModel sourceModel = snapshot.data!;
         return NewsDetails(
-          sourceModel: sourceModel,
+          sourceModel: snapshot.data!,
         );
       },
     );

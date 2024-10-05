@@ -8,7 +8,7 @@ import 'package:news_app/models/source_model.dart';
 
 class ApiManager {
   static const String apiKey = "fa8b144e12144c6d9ebdb47010053bf5";
-  static const String baseUrl = "https://newsapi.org";
+  static const String baseUrl = "newsapi.org";
 
   // domain              /endPoint               ? query parameters
   // https://newsapi.org/v2/top-headlines/sources?apiKey=fa8b144e12144c6d9ebdb47010053bf5&category=sports
