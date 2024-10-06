@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/layout/widgets/news_articals_list.dart';
 import 'package:news_app/layout/widgets/tab_bar_item.dart';
 import 'package:news_app/models/source_model.dart';
 
@@ -41,11 +42,17 @@ class _NewsDetailsState extends State<NewsDetails> {
               tabs: widget.sourcesList
                   .map(
                     (e) => TabBarItem(
-                  sourceModel: e,
-                  isSelected: selectedIndex == widget.sourcesList.indexOf(e),
-                ),
-              )
+                      sourceModel: e,
+                      isSelected:
+                          selectedIndex == widget.sourcesList.indexOf(e),
+                    ),
+                  )
                   .toList(),
+            ),
+          ),
+          Expanded(
+            child: NewsArticalsList(
+              sourceId: widget.sourcesList[selectedIndex].id,
             ),
           ),
         ],
