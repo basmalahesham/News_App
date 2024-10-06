@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-//import 'package:google_fonts/google_fonts.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
   static ThemeMode themeMode = ThemeMode.light;
@@ -9,6 +9,10 @@ class AppTheme {
     primaryColor: primaryColor,
     scaffoldBackgroundColor: Colors.transparent,
     appBarTheme: const AppBarTheme(
+      iconTheme: IconThemeData(
+        color: Colors.white,
+        size: 25,
+      ),
       elevation: 1,
       backgroundColor: primaryColor,
       shape: RoundedRectangleBorder(
@@ -23,80 +27,32 @@ class AppTheme {
         fontWeight: FontWeight.bold,
       ),
     ),
-    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-      elevation: 0,
-      backgroundColor: Colors.transparent,
-      showSelectedLabels: false,
-      showUnselectedLabels: false,
-      selectedIconTheme: IconThemeData(
-        color: primaryColor,
-        size: 30,
+    textTheme: TextTheme(
+      titleLarge: GoogleFonts.exo(
+        fontWeight: FontWeight.bold,
+        fontSize: 24,
+        color: Colors.white,
       ),
-      unselectedIconTheme: IconThemeData(
-        color: Colors.grey,
-        size: 30,
-      ),
-    ),
-    /*textTheme: TextTheme(
-      headlineMedium: GoogleFonts.poppins(
+      bodyLarge: GoogleFonts.exo(
         fontWeight: FontWeight.bold,
         fontSize: 22,
         color: Colors.white,
       ),
-      bodyMedium: TextStyle(
-        fontSize: 25,
-        color: Colors.black,
-        fontWeight: FontWeight.bold,
-      ),
-      bodySmall: GoogleFonts.poppins(
-        fontWeight: FontWeight.bold,
-        fontSize: 14,
-        color: Colors.black,
-      ),
-    ),*/
-  );
-  static ThemeData darkTheme = ThemeData(
-    primaryColor: primaryColor,
-    scaffoldBackgroundColor: Colors.transparent,
-    appBarTheme: const AppBarTheme(
-      elevation: 0,
-      backgroundColor: primaryColor,
-      centerTitle: false,
-      titleTextStyle: TextStyle(
+      bodyMedium: GoogleFonts.exo(
+        fontWeight: FontWeight.w500,
         fontSize: 22,
-        fontWeight: FontWeight.bold,
+        color: Colors.white,
       ),
-    ),
-    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-      elevation: 0,
-      backgroundColor: Colors.transparent,
-      showSelectedLabels: false,
-      showUnselectedLabels: false,
-      selectedIconTheme: IconThemeData(
-        color: primaryColor,
-        size: 30,
-      ),
-      unselectedIconTheme: IconThemeData(
-        color: Colors.grey,
-        size: 30,
-      ),
-    ),
-    /*textTheme: TextTheme(
-      headlineMedium: GoogleFonts.poppins(
-        fontWeight: FontWeight.bold,
-        fontSize: 22,
-        color: darkColor,
-      ),
-      bodyMedium: TextStyle(
-        fontSize: 25,
-        color: Colors.black,
-        fontWeight: FontWeight.bold,
-      ),
-      bodySmall: GoogleFonts.poppins(
-        fontWeight: FontWeight.bold,
+      bodySmall: GoogleFonts.exo(
+        fontWeight: FontWeight.w400,
         fontSize: 14,
         color: Colors.white,
       ),
-    ),*/
+      displayLarge: GoogleFonts.exo(
+        fontWeight: FontWeight.w500,
+        fontSize: 10,
+        color: Colors.white,
+      ),
+    ),
   );
 }
