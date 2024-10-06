@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:news_app/models/category_model.dart';
 
 class GridViewItemBuilder extends StatelessWidget {
@@ -16,6 +15,7 @@ class GridViewItemBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var theme = Theme.of(context);
     return GestureDetector(
       onTap: () {
         onClicked(categoryModel);
@@ -41,11 +41,7 @@ class GridViewItemBuilder extends StatelessWidget {
             ),
             Text(
               categoryModel.title,
-              style: GoogleFonts.exo(
-                fontSize: 22,
-                fontWeight: FontWeight.w500,
-                color: Colors.white,
-              ),
+              style: theme.textTheme.bodyMedium,
             ),
           ],
         ),
