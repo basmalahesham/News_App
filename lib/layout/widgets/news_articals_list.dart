@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/core/network/api_manager.dart';
 import 'package:news_app/layout/widgets/news_artical_item.dart';
-import 'package:news_app/models/articals_model.dart';
-import 'package:news_app/models/source_model.dart';
+import 'package:news_app/models/article_model.dart';
 
 class NewsArticalsList extends StatelessWidget {
-  final Sources source;
+  final String sourceId;
 
   const NewsArticalsList({
     super.key,
-    required this.source,
+    required this.sourceId,
   });
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<ArticalsModel>(
-      future: ApiManager.fetchArticals(source.id!),
+    return FutureBuilder(
+      future: ApiManager.fetchArticals(sourceId),
       builder: (context, snapshot) {
         if (snapshot.hasError) {
           return Center(child: Text(snapshot.error.toString()));
@@ -25,11 +24,11 @@ class NewsArticalsList extends StatelessWidget {
             child: CircularProgressIndicator(),
           );
         }
-        List<Articles> articalsList = snapshot.data?.articles ?? [];
+        List<ArticleModel> articalsList = snapshot.data??[];
         return ListView.builder(
           padding: const EdgeInsets.all(20),
           itemBuilder: (context, index) => NewsArticalItem(
-            articles: articalsList[index],
+            articleModel: articalsList[index],
           ),
           itemCount: articalsList.length,
         );
