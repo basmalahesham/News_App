@@ -1,7 +1,6 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:news_app/layout/widgets/custom_drawer.dart';
 import 'package:news_app/layout/widgets/grid_view_item_builder.dart';
 import 'package:news_app/layout/category_view.dart';
@@ -77,6 +76,21 @@ class _HomeViewState extends State<HomeView> {
             selectedCategory == null ? 'News App' : selectedCategory!.title,
             style: theme.textTheme.bodyLarge,
           ),
+          actions: [
+            if (selectedCategory != null)
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                child: IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.search_rounded,
+                    size: 45,
+                    color: Colors.white,
+                  ),
+                ),
+              )
+          ],
+          leadingWidth: 80,
         ),
         drawer: CustomDrawer(
           selectedCategory: selectedCategory,
@@ -91,11 +105,8 @@ class _HomeViewState extends State<HomeView> {
                     Text(
                       'Pick your Category \n of interest',
                       textAlign: TextAlign.start,
-                      style: GoogleFonts.poppins(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 22,
-                        color: const Color(0xFF4F5A69),
-                      ),
+                      style: theme.textTheme.bodyLarge?.copyWith(
+                          color: const Color(0xFF4F5A69), height: 1.15),
                     ),
                     Expanded(
                       child: GridView.builder(
@@ -111,7 +122,7 @@ class _HomeViewState extends State<HomeView> {
                           index: index,
                           onClicked: onClicked,
                         ),
-                        itemCount: categoriesList.length,
+                        itemCount: 6,
                       ),
                     ),
                   ],

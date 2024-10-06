@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/layout/home_layout_view.dart';
+import 'package:news_app/layout/home_view.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -19,7 +19,7 @@ class _SplashViewState extends State<SplashView> {
         seconds: 3,
       ),
       () =>
-          Navigator.of(context).pushReplacementNamed(HomeLayoutView.routeName),
+          Navigator.of(context).pushReplacementNamed(HomeView.routeName),
     );
     return Container(
       decoration: const BoxDecoration(
