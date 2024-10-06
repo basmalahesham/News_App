@@ -1,25 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/models/source_model.dart';
 
 class TabBarItem extends StatelessWidget {
-  final String title;
-  final bool selected;
+  final SourceModel sourceModel;
+  bool isSelected;
 
-  const TabBarItem({
+   TabBarItem({
     super.key,
-    required this.title,
-    required this.selected,
+    required this.sourceModel,
+    this.isSelected = false,
   });
 
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     return Container(
-      width: 120,
-      height: 40,
-      alignment: Alignment.center,
-      margin: const EdgeInsets.symmetric(vertical: 12, horizontal: 5),
+      height: 45,
+      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 4),
       decoration: BoxDecoration(
-        color: selected ? theme.primaryColor : Colors.white,
+        color: isSelected ? theme.primaryColor : Colors.transparent,
         borderRadius: BorderRadius.circular(25.0),
         border: Border.all(
           color: theme.primaryColor,
@@ -27,10 +26,9 @@ class TabBarItem extends StatelessWidget {
         ),
       ),
       child: Text(
-        title,
-        textAlign: TextAlign.center,
-        style: TextStyle(
-          color: selected ? Colors.white : theme.primaryColor,
+        sourceModel.name,
+        style: theme.textTheme.bodyMedium?.copyWith(
+          color: isSelected ? Colors.white : theme.primaryColor,
         ),
       ),
     );

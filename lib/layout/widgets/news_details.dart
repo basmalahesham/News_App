@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/layout/widgets/news_articals_list.dart';
 import 'package:news_app/layout/widgets/tab_bar_item.dart';
 import 'package:news_app/models/source_model.dart';
 
 class NewsDetails extends StatefulWidget {
-  final SourceModel sourceModel;
+  final List<SourceModel> sourcesList;
 
   const NewsDetails({
     super.key,
-    required this.sourceModel,
+    required this.sourcesList,
   });
 
   @override
@@ -21,34 +20,32 @@ class _NewsDetailsState extends State<NewsDetails> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: widget.sourceModel.sources!.length,
+      length: widget.sourcesList.length,
       child: Column(
         children: [
-          TabBar(
-            labelPadding: const EdgeInsets.symmetric(horizontal: 4),
-            indicator: const BoxDecoration(
-              border: Border(
-                bottom: BorderSide.none,
+          Padding(
+            padding: const EdgeInsets.only(top: 20.0),
+            child: TabBar(
+              labelPadding: const EdgeInsets.symmetric(horizontal: 4),
+              indicator: const BoxDecoration(
+                border: Border(
+                  bottom: BorderSide.none,
+                ),
               ),
-            ),
-            isScrollable: true,
-            onTap: (int index) {
-              selectedIndex = index;
-              setState(() {});
-            },
-            tabs: widget.sourceModel.sources!
-                .map(
-                  (e) => TabBarItem(
-                    title: e.name ?? '',
-                    selected:
-                        selectedIndex == widget.sourceModel.sources!.indexOf(e),
-                  ),
-                )
-                .toList(),
-          ),
-          Expanded(
-            child: NewsArticalsList(
-              source: widget.sourceModel.sources![selectedIndex],
+              dividerColor: Colors.transparent,
+              isScrollable: true,
+              onTap: (int index) {
+                selectedIndex = index;
+                setState(() {});
+              },
+              tabs: widget.sourcesList
+                  .map(
+                    (e) => TabBarItem(
+                  sourceModel: e,
+                  isSelected: selectedIndex == widget.sourcesList.indexOf(e),
+                ),
+              )
+                  .toList(),
             ),
           ),
         ],
