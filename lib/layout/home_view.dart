@@ -4,19 +4,20 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:news_app/layout/widgets/custom_drawer.dart';
 import 'package:news_app/layout/widgets/grid_view_item_builder.dart';
-import 'package:news_app/layout/widgets/news_view.dart';
+import 'package:news_app/layout/category_view.dart';
 import 'package:news_app/models/category_model.dart';
 
-class HomeLayoutView extends StatefulWidget {
-  const HomeLayoutView({super.key});
+class HomeView extends StatefulWidget {
+  const HomeView({super.key});
 
   static const String routeName = "home";
 
   @override
-  State<HomeLayoutView> createState() => _HomeLayoutViewState();
+  State<HomeView> createState() => _HomeViewState();
 }
 
-class _HomeLayoutViewState extends State<HomeLayoutView> {
+class _HomeViewState extends State<HomeView> {
+
   List<CategoryModel> categoriesList = [
     CategoryModel(
       id: 'sports',
@@ -55,9 +56,11 @@ class _HomeLayoutViewState extends State<HomeLayoutView> {
       backgroundColor: const Color(0xFFF2D352),
     ),
   ];
+  CategoryModel? selectedCategory;
 
   @override
   Widget build(BuildContext context) {
+    var theme = Theme.of(context);
     return Container(
       decoration: const BoxDecoration(
         color: Colors.white,
@@ -70,16 +73,9 @@ class _HomeLayoutViewState extends State<HomeLayoutView> {
       ),
       child: Scaffold(
         appBar: AppBar(
-          iconTheme: const IconThemeData(
-            color: Colors.white,
-            size: 25,
-          ),
           title: Text(
             selectedCategory == null ? 'News App' : selectedCategory!.title,
-            style: GoogleFonts.exo(
-              fontSize: 22,
-              fontWeight: FontWeight.w500,
-            ),
+            style: theme.textTheme.bodyLarge,
           ),
         ),
         drawer: CustomDrawer(
@@ -121,12 +117,10 @@ class _HomeLayoutViewState extends State<HomeLayoutView> {
                   ],
                 ),
               )
-            : NewsView(categoryModel: selectedCategory!),
+            : CategoryView(categoryModel: selectedCategory!),
       ),
     );
   }
-
-  CategoryModel? selectedCategory;
 
   onClicked(CategoryModel categoryModel) {
     log(categoryModel.title);
